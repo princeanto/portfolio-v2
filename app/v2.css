@@ -1,0 +1,315 @@
+/*
+  Design system modelled on callumupfield.com.
+  Deliberately monochrome — the only colour on the page comes from the
+  project artwork itself. Scoped to .v2 so it can't collide with the
+  legacy pages.
+*/
+
+.v2 {
+  --bg: #000000;
+  --fg: #FFFFFF;
+  --body: #BCBCBC;      /* paragraph text */
+  --muted: #696969;     /* section labels, meta */
+  --panel: #141414;     /* project media cards */
+  --chip: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.12);
+  --nav: rgba(27, 27, 27, 0.6);
+  --logo-filter: brightness(0) invert(1);
+  --pointer-glow: rgba(255, 255, 255, 0.055);
+
+  /* Atmosphere — lifts the page off flat black without introducing colour.
+     White over black renders at roughly 255 × alpha, so these alphas are set
+     to land in the low 20s–30s: clearly present, still quiet. */
+  --ambient-a: rgba(255, 255, 255, 0.17);
+  --ambient-b: rgba(255, 255, 255, 0.11);
+  --ambient-c: rgba(255, 255, 255, 0.075);
+  --vignette: rgba(0, 0, 0, 0.55);
+  --grain-opacity: 0.055;
+
+  /* Overlays — the scrim dims the page, the raised surface sits above it */
+  --scrim: rgba(0, 0, 0, 0.74);
+  --raised: #1B1B1E;
+  --raised-line: rgba(255, 255, 255, 0.18);
+  /*
+    On a black page a drop shadow is invisible, so the dark theme separates the
+    panel with a faint outward bloom of light instead of a shadow.
+  */
+  --shadow-modal: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 70px rgba(255, 255, 255, 0.07),
+    0 40px 100px rgba(0, 0, 0, 0.9);
+
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.v2.light {
+  --bg: #FFFFFF;
+  --fg: #0A0A0A;
+  --body: #4A4A4A;
+  --muted: #8A8A8A;
+  --panel: #F2F2F3;
+  --chip: rgba(0, 0, 0, 0.06);
+  --line: rgba(0, 0, 0, 0.12);
+  --nav: rgba(0, 0, 0, 0.05);
+  --logo-filter: none;
+  --pointer-glow: rgba(0, 0, 0, 0.045);
+
+  --ambient-a: rgba(0, 0, 0, 0.075);
+  --ambient-b: rgba(0, 0, 0, 0.05);
+  --ambient-c: rgba(0, 0, 0, 0.035);
+  --vignette: rgba(0, 0, 0, 0.05);
+  --grain-opacity: 0.03;
+
+  --scrim: rgba(18, 18, 22, 0.5);
+  --raised: #FFFFFF;
+  --raised-line: rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 32px 90px rgba(0, 0, 0, 0.28), 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.v2 ::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* Layout ---------------------------------------------------------------- */
+
+.v2 .shell {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Section label: "About me ────────────────" */
+
+.v2 .section-label {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.v2 .section-label > span:first-child {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.v2 .section-label > span:last-child {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Pills ----------------------------------------------------------------- */
+
+.v2 .chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--chip);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  font-size: 14px;
+  color: var(--fg);
+  white-space: nowrap;
+  transition: background-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.v2 .group:hover .chip {
+  transform: translateY(-1px);
+}
+
+.v2 .btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.9rem 1.6rem;
+  font-size: 18px;
+  font-weight: 600;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.v2 .btn-solid:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+.v2 .btn-solid:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.v2 .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  padding: 0.9rem 1.6rem;
+  font-size: 18px;
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+
+.v2 .btn-ghost:hover {
+  border-color: var(--fg);
+  transform: translateY(-2px);
+}
+
+.v2 .btn-ghost:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Project media card ----------------------------------------------------- */
+
+.v2 .media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--panel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2,
+  .v2::before,
+  .v2::after,
+  .v2 *,
+  .v2 *::before,
+  .v2 *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Hold the drift at a settled mid position rather than a keyframe edge */
+  .v2::before {
+    animation: none !important;
+    transform: translate3d(0, 0, 0) scale(1.04);
+  }
+}
+
+/* Text links: underline wipes in from the left ------------------------- */
+
+.v2 .link {
+  position: relative;
+  display: inline-block;
+  transition: color var(--dur) var(--ease);
+}
+
+.v2 .link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
+.v2 .link:hover::after {
+  transform: scaleX(1);
+}
+
+.v2 .link:hover {
+  color: var(--fg);
+}
+
+/* Keyboard focus, styled rather than suppressed ------------------------ */
+
+.v2 a:focus-visible,
+.v2 button:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Gallery tiles: no lift — the inner image scale carries the hover ------ */
+
+/* Background atmosphere -------------------------------------------------
+   Two fixed layers behind everything: soft pools of light, then a film grain
+   over them. Both are pseudo-elements, so they cost no DOM and no
+   JavaScript, and both sit under the z-10 content layer. No repeating
+   pattern — the page should read as lit, not as textured. */
+
+.v2::before,
+.v2::after {
+  content: '';
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Three diffuse light pools, placed off-balance so the eye never resolves
+   them into a shape. Oversized and drifting, so the gradient edges stay off
+   screen. */
+.v2::before {
+  inset: -25%;
+  background-image:
+    radial-gradient(38% 42% at 20% 14%, var(--ambient-a), transparent 68%),
+    radial-gradient(34% 36% at 84% 34%, var(--ambient-b), transparent 68%),
+    radial-gradient(42% 34% at 52% 86%, var(--ambient-c), transparent 70%);
+  animation: v2-drift 44s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Composited transform only — no repaint, so the drift is effectively free */
+@keyframes v2-drift {
+  from {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2%, 1.5%, 0) scale(1.08);
+  }
+}
+
+/* Draws the eye inward and keeps the light pools from reaching the edges */
+.v2 .vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 78% 68% at 50% 42%, transparent 45%, var(--vignette) 100%);
+}
+
+/* Film grain — breaks up the flat fill so large dark areas stop banding */
+.v2::after {
+  inset: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* AI playground cards ---------------------------------------------------- */
+
+.v2 .ai-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  transition:
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.v2 .ai-card:hover {
+  border-color: var(--fg);
+  transform: translateY(-3px);
+}
+
+/* Overlay primitives ---------------------------------------------------- */
+
+.v2 .scrim {
+  background: var(--scrim);
+  backdrop-filter: blur(10px);
+}
+
+/* Raised surface: distinct from the page, with a real edge and shadow */
+.v2 .raised {
+  background: var(--raised);
+  border: 1px solid var(--raised-line);
+  box-shadow: var(--shadow-modal);
+}
