@@ -1,32 +1,14 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Figtree, Space_Grotesk, Inter, DM_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./responsive.css";
+import AOS from "aos";
 import "aos/dist/aos.css";
-import StructuredData from "./_components/structured-data";
+import { LenisProvider } from "./providers/lenis-provider";
+import StructuredData from "./components/structured-data";
 const figtree = Figtree({
   variable: "--font-figtree",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -56,7 +38,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Prince Ladislas",
-      url: "https://princeladislas1.vercel.app"
+      url: "https://princeladislas.vercel.app"
     }
   ],
   creator: "Prince Ladislas",
@@ -66,14 +48,14 @@ export const metadata: Metadata = {
     telephone: true,
     address: false,
   },
-  metadataBase: new URL("https://princeladislas1.vercel.app"),
+  metadataBase: new URL("https://princeladislas.vercel.app"),
   alternates: {
-    canonical: "https://princeladislas1.vercel.app",
+    canonical: "https://princeladislas.vercel.app",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://princeladislas1.vercel.app",
+    url: "https://princeladislas.vercel.app",
     title: "Prince Ladislas | Product Designer",
     description: "Product designer focused on creating intuitive and beautiful user experiences. Specializing in product design, UI/UX, and digital solutions.",
     siteName: "Prince Ladislas Portfolio",
@@ -160,7 +142,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ scrollBehavior: 'auto' }} suppressHydrationWarning>
+    <html lang="en" className="dark" style={{ scrollBehavior: 'auto' }}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
@@ -170,7 +152,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Prince Portfolio" />
         <StructuredData />
       </head>
-      <body className={`${figtree.variable} ${lightAiry.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${inter.variable} ${dmSans.variable} antialiased`}>
+      <body className={`${figtree.variable} ${lightAiry.variable} antialiased`}>
         {/* <LenisProvider /> */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -178,12 +160,6 @@ export default function RootLayout({
               history.scrollRestoration = 'manual';
             }
             window.scrollTo(0, 0);
-            // Apply the stored theme before paint so there's no flash
-            try {
-              var t = localStorage.getItem('theme') || 'dark';
-              document.documentElement.classList.toggle('dark', t === 'dark');
-              document.documentElement.style.colorScheme = t;
-            } catch (e) {}
           `
         }} />
         {children}

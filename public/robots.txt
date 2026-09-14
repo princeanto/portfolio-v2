@@ -17,4 +17,4 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://princeladislas1.vercel.app/sitemap.xml
+Sitemap: https://princeladislas.vercel.app/sitemap.xml
