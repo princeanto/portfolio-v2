@@ -95,6 +95,17 @@ export const AI_PLAYGROUND: AiWork[] = [
     art: '/assets/images/ai-runner-imac.webp',
     year: '2026',
   },
+  {
+    title: 'Spot the Lie',
+    blurb:
+      'Four statements a round, three of them true and one invented by a model. ' +
+      '56 rounds, three hints, three wrong answers and you start over.',
+    href: 'https://spot-the-lie.vercel.app',
+    kind: 'Game',
+    stack: 'Next.js',
+    art: '/assets/images/ai-spot-the-lie.webp',
+    year: '2026',
+  },
 ];
 
 export type Service = { title: string; body: string; icon: string };
