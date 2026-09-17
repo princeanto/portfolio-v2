@@ -74,14 +74,14 @@ export const AI_PLAYGROUND: AiWork[] = [
     year: '2026',
   },
   {
-    title: 'Legible',
+    title: 'Playground',
     blurb:
-      'Feed it a screenshot, a URL or a token file and it grades every colour pair against ' +
-      'WCAG 2.2, then repairs the failures in OKLCH so the hue you picked survives.',
-    href: 'https://legible-eight.vercel.app',
+      'Colour, type, shape, draw, make and dare: six small creative tools in one tab. ' +
+      'No account, and once loaded it installs and keeps working offline.',
+    href: 'https://playground-phi-orpin.vercel.app',
     kind: 'Tool',
-    stack: 'Next.js · OKLCH',
-    art: '/assets/images/ai-legible-contrast.webp',
+    stack: 'Next.js · PWA',
+    art: '/assets/images/ai-playground.webp',
     year: '2026',
   },
   {
