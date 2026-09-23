@@ -17,23 +17,30 @@ export const PROFILE = {
   ],
 };
 
-/* Desktop pill nav — every browsable section, in page order. Home is omitted
-   because the logo returns to top, and Contact because the "Let's talk"
-   button sits beside this nav. This list also drives the scroll-spy
-   highlight, so labels here match the section headings exactly. */
-export const NAV_PRIMARY = [
+export type NavItem = {
+  label: string;
+  href: string;
+  /** Shown as an icon in the desktop pill; the label still names it for
+      screen readers and is used as-is in the mobile menu */
+  icon?: 'home';
+};
+
+/* Desktop pill nav. Home leads as an icon; Contact is left out because the
+   "Let's talk" button sits beside this nav. This list also drives the
+   scroll-spy highlight, so labels here match the section headings. */
+export const NAV_PRIMARY: NavItem[] = [
+  { label: 'Home', href: '#top', icon: 'home' },
   { label: 'Selected works', href: '#work' },
   { label: 'UI works', href: '#ui' },
   { label: 'AI playground', href: '#ai' },
   // Creative breaks is parked — uncomment here and in app/page.tsx to restore
   // { label: 'Creative breaks', href: '#play' },
+  { label: 'About me', href: '#about' },
   { label: 'Community', href: '#community' },
-  { label: 'About', href: '#about' },
 ];
 
-/* Mobile overlay — everything, including the two the pill leaves out */
-export const NAV_ALL = [
-  { label: 'Home', href: '#top' },
+/* Mobile overlay — the same run, plus the two the pill leaves out */
+export const NAV_ALL: NavItem[] = [
   ...NAV_PRIMARY,
   { label: 'In their words', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },

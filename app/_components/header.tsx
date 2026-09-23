@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Home } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ThemeToggle } from './theme';
 import { PROFILE, NAV_PRIMARY, NAV_ALL } from '../_lib/data';
@@ -122,6 +123,7 @@ export default function Header() {
                   href={item.href}
                   onClick={e => go(e, item.href)}
                   aria-current={isActive ? 'page' : undefined}
+                  aria-label={item.icon ? item.label : undefined}
                   className="relative whitespace-nowrap rounded-[10px] px-3 py-2 text-[13px] transition-colors xl:px-3.5 xl:text-[14px]"
                 >
                   {isActive && (
@@ -133,10 +135,15 @@ export default function Header() {
                     />
                   )}
                   <span
-                    className="relative z-10"
+                    className="relative z-10 flex items-center"
                     style={{ color: isActive ? 'var(--bg)' : 'var(--muted)' }}
                   >
-                    {item.label}
+                    {/* Home leads the run as an icon; the rest are words */}
+                    {item.icon === 'home' ? (
+                      <Home size={16} strokeWidth={1.9} aria-hidden="true" />
+                    ) : (
+                      item.label
+                    )}
                   </span>
                 </a>
               );
