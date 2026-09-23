@@ -152,8 +152,9 @@ export default function Header() {
 
           <div className="flex flex-shrink-0 items-center gap-3">
             <Link
-              href={PROFILE.contactForm}
+              href={PROFILE.linkedin}
               target="_blank"
+              rel="noreferrer"
               className="hidden items-center gap-2 rounded-[10px] border px-4 py-2 text-[15px] transition-colors duration-300 lg:inline-flex"
               style={{ borderColor: 'var(--line)', color: 'var(--fg)' }}
             >

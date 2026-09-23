@@ -26,7 +26,7 @@ export default function Contact() {
       <Reveal delay={0.12}>
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <a
-            href={PROFILE.contactForm}
+            href={PROFILE.linkedin}
             target="_blank"
             rel="noreferrer"
             className="btn-solid gap-2"

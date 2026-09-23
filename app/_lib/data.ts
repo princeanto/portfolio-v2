@@ -1,15 +1,20 @@
 /* Single source of truth for all page content. */
 
+/* One source for the profile link — the talk/chat buttons and the socials
+   list all point at it, so it only ever has to be changed here. */
+const LINKEDIN = 'https://www.linkedin.com/in/prince-ladislas/';
+
 export const PROFILE = {
   name: 'Prince Ladislas',
   role: 'Product Designer',
   location: 'India',
   email: 'princeladislas@gmail.com',
   resume: '/assets/pdf/Resume.pdf',
+  linkedin: LINKEDIN,
   contactForm: 'https://forms.gle/GUYL1qWKesVqbmPi7',
   timeZone: 'Asia/Kolkata',
   socials: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/prince-ladislas/' },
+    { label: 'LinkedIn', href: LINKEDIN },
     {
       label: 'Instagram',
       href: 'https://www.instagram.com/anto__designs?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
