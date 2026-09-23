@@ -3,6 +3,7 @@ import { Geist_Mono, Figtree, Space_Grotesk, Inter, DM_Sans } from "next/font/go
 import localFont from "next/font/local";
 import "./globals.css";
 import "aos/dist/aos.css";
+import { Analytics } from "@vercel/analytics/next";
 import StructuredData from "./_components/structured-data";
 const figtree = Figtree({
   variable: "--font-figtree",
@@ -187,6 +188,9 @@ export default function RootLayout({
           `
         }} />
         {children}
+        {/* Page-view counts only — no cookies, and the visitor hash resets
+            daily, so nobody is identified or followed between days. */}
+        <Analytics />
       </body>
     </html>
   );
