@@ -18,6 +18,14 @@
   --pointer-glow: rgba(255, 255, 255, 0.055);
   /* The one colour the interface itself is allowed: an "open for work" light */
   --live: #34D399;
+  /* Active nav pill — a lit surface rather than a solid white slab */
+  --nav-active: rgba(255, 255, 255, 0.13);
+
+  /* Shared motion. Every `var(--dur) var(--ease)` transition in this file
+     depends on these; without them the whole declaration is invalid and the
+     hover states jump instead of easing. */
+  --dur: 200ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Atmosphere — lifts the page off flat black without introducing colour.
      White over black renders at roughly 255 × alpha, so these alphas are set
@@ -58,6 +66,7 @@
   --pointer-glow: rgba(0, 0, 0, 0.045);
   /* Darker on white, so the dot keeps its weight against a light background */
   --live: #15A34A;
+  --nav-active: rgba(0, 0, 0, 0.07);
 
   --ambient-a: rgba(0, 0, 0, 0.075);
   --ambient-b: rgba(0, 0, 0, 0.05);
@@ -104,6 +113,30 @@
   flex: 1;
   height: 1px;
   background: var(--line);
+}
+
+/* Top bar nav ----------------------------------------------------------- */
+
+.v2 .nav-link {
+  color: var(--muted);
+  transition:
+    color 140ms var(--ease),
+    background-color 160ms var(--ease);
+}
+
+/* A faint surface under the pointer, so the item answers before it is the
+   active one. It sits behind the sliding pill. */
+.v2 .nav-link:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+}
+
+.v2 .nav-link[aria-current='page']:hover {
+  background: transparent;
+}
+
+.v2 .nav-link[aria-current='page'] {
+  color: var(--fg);
 }
 
 /* Pills ----------------------------------------------------------------- */

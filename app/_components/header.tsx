@@ -124,20 +124,20 @@ export default function Header() {
                   onClick={e => go(e, item.href)}
                   aria-current={isActive ? 'page' : undefined}
                   aria-label={item.icon ? item.label : undefined}
-                  className="relative whitespace-nowrap rounded-[10px] px-3 py-2 text-[13px] transition-colors xl:px-3.5 xl:text-[14px]"
+                  className="nav-link relative whitespace-nowrap rounded-[10px] px-3 py-2 text-[13px] xl:px-3.5 xl:text-[14px]"
                 >
                   {isActive && (
                     <motion.span
                       layoutId="v2-nav-pill"
                       className="absolute inset-0 rounded-[10px]"
-                      style={{ background: 'var(--fg)' }}
-                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                      style={{ background: 'var(--nav-active)' }}
+                      /* Tween, not spring: it lands on time with no wobble.
+                         0.26s on a power3-out curve, the timing ReactBits'
+                         PillNav uses for the same move. */
+                      transition={{ type: 'tween', duration: 0.26, ease: [0.165, 0.84, 0.44, 1] }}
                     />
                   )}
-                  <span
-                    className="relative z-10 flex items-center"
-                    style={{ color: isActive ? 'var(--bg)' : 'var(--muted)' }}
-                  >
+                  <span className="relative z-10 flex items-center">
                     {/* Home leads the run as an icon; the rest are words */}
                     {item.icon === 'home' ? (
                       <Home size={16} strokeWidth={1.9} aria-hidden="true" />
