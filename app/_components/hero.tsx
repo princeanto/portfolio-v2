@@ -61,7 +61,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
           className="mt-10 flex flex-wrap items-center gap-3"
         >
-          <a href={PROFILE.contactForm} target="_blank" rel="noreferrer" className="btn-solid">
+          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="btn-solid">
             Let&apos;s work together
           </a>
           <ResumeLink className="btn-ghost">Download résumé</ResumeLink>

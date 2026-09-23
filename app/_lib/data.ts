@@ -11,6 +11,7 @@ export const PROFILE = {
   email: 'princeladislas@gmail.com',
   resume: '/assets/pdf/Resume.pdf',
   linkedin: LINKEDIN,
+  // Kept for reference — every contact button now opens LinkedIn instead
   contactForm: 'https://forms.gle/GUYL1qWKesVqbmPi7',
   timeZone: 'Asia/Kolkata',
   socials: [
