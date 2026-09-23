@@ -26,7 +26,7 @@ export default function Testimonials() {
   const active = TESTIMONIALS[index];
 
   return (
-    <Section id="testimonials" label="Kind words">
+    <Section id="testimonials" label="In their words">
 
       <Reveal>
         <div className="rounded-[20px] p-8 sm:p-12" style={{ background: 'var(--panel)' }}>

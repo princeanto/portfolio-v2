@@ -198,6 +198,8 @@ function ProjectEntry({ project, index }: { project: Project; index: number }) {
 }
 
 export default function Work() {
+  // The heading for this section is the scroll cue at the foot of the hero,
+  // directly above it — a second one here would only repeat it.
   return (
     <Section id="work" className="!pt-10">
       {PROJECTS.map((project, i) => (

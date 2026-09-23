@@ -16,6 +16,8 @@
   --nav: rgba(27, 27, 27, 0.6);
   --logo-filter: brightness(0) invert(1);
   --pointer-glow: rgba(255, 255, 255, 0.055);
+  /* The one colour the interface itself is allowed: an "open for work" light */
+  --live: #34D399;
 
   /* Atmosphere — lifts the page off flat black without introducing colour.
      White over black renders at roughly 255 × alpha, so these alphas are set
@@ -54,6 +56,8 @@
   --nav: rgba(0, 0, 0, 0.05);
   --logo-filter: none;
   --pointer-glow: rgba(0, 0, 0, 0.045);
+  /* Darker on white, so the dot keeps its weight against a light background */
+  --live: #15A34A;
 
   --ambient-a: rgba(0, 0, 0, 0.075);
   --ambient-b: rgba(0, 0, 0, 0.05);

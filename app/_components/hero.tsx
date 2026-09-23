@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'motion/react';
+import ResumeLink from './resume-link';
 import { PROFILE } from '../_lib/data';
 
 const rise = {
@@ -63,9 +64,7 @@ export default function Hero() {
           <a href={PROFILE.contactForm} target="_blank" rel="noreferrer" className="btn-solid">
             Let&apos;s work together
           </a>
-          <a href={PROFILE.resume} download="Prince_Ladislas_Resume.pdf" className="btn-ghost">
-            Download résumé
-          </a>
+          <ResumeLink className="btn-ghost">Download résumé</ResumeLink>
         </motion.div>
 
         <motion.button
@@ -75,9 +74,9 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}
           className="section-label mt-auto pt-16 text-left"
-          aria-label="Jump to selected projects"
+          aria-label="Jump to selected works"
         >
-          <span>Selected projects</span>
+          <span>Selected works</span>
           <span />
         </motion.button>
       </div>

@@ -99,10 +99,10 @@ export default function Header() {
             <Image
               src="/assets/images/logo.png"
               alt=""
-              width={26}
-              height={26}
+              width={72}
+              height={72}
               aria-hidden="true"
-              className="h-[22px] w-auto"
+              className="h-[34px] w-auto"
               style={{ filter: 'var(--logo-filter)' }}
               priority
             />
@@ -122,7 +122,7 @@ export default function Header() {
                   href={item.href}
                   onClick={e => go(e, item.href)}
                   aria-current={isActive ? 'page' : undefined}
-                  className="relative whitespace-nowrap rounded-[10px] px-3.5 py-2 text-[14px] transition-colors"
+                  className="relative whitespace-nowrap rounded-[10px] px-3 py-2 text-[13px] transition-colors xl:px-3.5 xl:text-[14px]"
                 >
                   {isActive && (
                     <motion.span
@@ -150,7 +150,14 @@ export default function Header() {
               className="hidden items-center gap-2 rounded-[10px] border px-4 py-2 text-[15px] transition-colors duration-300 lg:inline-flex"
               style={{ borderColor: 'var(--line)', color: 'var(--fg)' }}
             >
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: 'var(--fg)' }} />
+              {/* Green, the way a status light reads as "open" */}
+              <span
+                className="h-[7px] w-[7px] flex-shrink-0 rounded-full"
+                style={{
+                  background: 'var(--live)',
+                  boxShadow: '0 0 0 3px color-mix(in srgb, var(--live) 20%, transparent)',
+                }}
+              />
               Let&apos;s talk
             </Link>
 

@@ -153,32 +153,52 @@ export function UiWorks() {
 
   return (
     <Section id="ui" label="UI works">
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {UI_WORKS.map((item, i) => (
           <Reveal key={item.thumb} delay={i * 0.06}>
-            <button
-              type="button"
-              onClick={() => setOpen(i)}
-              aria-label={`Open ${item.alt}`}
-              className="group relative block w-full overflow-hidden rounded-[14px] transition-colors duration-300"
-              style={{ background: 'var(--panel)' }}
+            {/*
+              No surface is painted behind the shot. The thumbnails are
+              transparent around a rounded panel of their own, so a panel
+              background here would show through those corners as dark
+              notches — visible until a hover scaled the image over them.
+            */}
+            <article
+              className="flex h-full flex-col overflow-hidden rounded-[16px] border transition-colors duration-300 hover:border-[var(--fg)]"
+              style={{ borderColor: 'var(--line)' }}
             >
-              <span className="block aspect-[4/5] w-full">
-                <Image
-                  src={item.thumb}
-                  alt={item.alt}
-                  width={1200}
-                  height={1500}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                />
-              </span>
-              <span
-                className="absolute left-3 top-3 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.14em] text-white"
-                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}
+              <button
+                type="button"
+                onClick={() => setOpen(i)}
+                aria-label={`Open ${item.title}`}
+                className="group relative block w-full overflow-hidden"
               >
-                {String(i + 1).padStart(2, '0')}
-              </span>
-            </button>
+                {/* 3/4 matches the 850×1146 files, so nothing is cropped */}
+                <span className="block aspect-[3/4] w-full">
+                  <Image
+                    src={item.thumb}
+                    alt={item.alt}
+                    width={850}
+                    height={1146}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                </span>
+                <span
+                  className="absolute left-3 top-3 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.14em] text-white"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.6)' }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </button>
+
+              {/* Says what the screen is, so the grid reads as work rather
+                  than decoration */}
+              <div className="border-t p-5" style={{ borderColor: 'var(--line)' }}>
+                <p className="text-[15px] font-semibold leading-tight">{item.title}</p>
+                <p className="mt-2 text-[13.5px] leading-relaxed" style={{ color: 'var(--body)' }}>
+                  {item.note}
+                </p>
+              </div>
+            </article>
           </Reveal>
         ))}
       </div>

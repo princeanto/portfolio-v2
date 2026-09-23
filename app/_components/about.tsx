@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Section, Reveal, EmphasisText } from './section';
+import ResumeLink from './resume-link';
 import { ABOUT, PROFILE, SERVICES } from '../_lib/data';
 
 export default function About() {
@@ -58,9 +59,7 @@ export default function About() {
 
       <Reveal delay={0.1}>
         <div className="mt-14 flex justify-center">
-          <a href={PROFILE.resume} download="Prince_Ladislas_Resume.pdf" className="btn-solid">
-            Here&apos;s my CV
-          </a>
+          <ResumeLink className="btn-solid">Here&apos;s my CV</ResumeLink>
         </div>
       </Reveal>
     </Section>

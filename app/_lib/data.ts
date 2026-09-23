@@ -17,15 +17,17 @@ export const PROFILE = {
   ],
 };
 
-/* Desktop pill nav — kept to the headline sections, in page order. Home is
-   omitted because the logo returns to top, and Contact because the "Let's
-   talk" button sits beside this nav. Creative breaks and Community are still
-   on the page; they are simply found by scrolling rather than linked here.
-   This list also drives the scroll-spy highlight. */
+/* Desktop pill nav — every browsable section, in page order. Home is omitted
+   because the logo returns to top, and Contact because the "Let's talk"
+   button sits beside this nav. This list also drives the scroll-spy
+   highlight, so labels here match the section headings exactly. */
 export const NAV_PRIMARY = [
-  { label: 'Projects', href: '#work' },
+  { label: 'Selected works', href: '#work' },
   { label: 'UI works', href: '#ui' },
   { label: 'AI playground', href: '#ai' },
+  // Creative breaks is parked — uncomment here and in app/page.tsx to restore
+  // { label: 'Creative breaks', href: '#play' },
+  { label: 'Community', href: '#community' },
   { label: 'About', href: '#about' },
 ];
 
@@ -33,6 +35,7 @@ export const NAV_PRIMARY = [
 export const NAV_ALL = [
   { label: 'Home', href: '#top' },
   ...NAV_PRIMARY,
+  { label: 'In their words', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -199,11 +202,37 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+/* Each screen carries its own title and one line about what it shows, so the
+   grid reads as four pieces of work rather than four pictures. */
 export const UI_WORKS = [
-  { thumb: '/assets/images/ui-works-1.webp', full: '/assets/images/ui-works-full-1.webp', alt: 'Digital KYC onboarding' },
-  { thumb: '/assets/images/ui-works-2.webp', full: '/assets/images/ui-works-full-2.webp', alt: 'Cookr home-chef flow' },
-  { thumb: '/assets/images/ui-works-3.webp', full: '/assets/images/ui-works-full-3.webp', alt: 'Salary advance activation' },
-  { thumb: '/assets/images/ui-works-4.webp', full: '/assets/images/ui-works-full-4.webp', alt: 'Banking dashboard' },
+  {
+    thumb: '/assets/images/ui-works-1.webp',
+    full: '/assets/images/ui-works-full-1.webp',
+    alt: 'Digital KYC onboarding',
+    title: 'Digital KYC',
+    note: 'Onboarding that verifies an ID from a photo of the card.',
+  },
+  {
+    thumb: '/assets/images/ui-works-2.webp',
+    full: '/assets/images/ui-works-full-2.webp',
+    alt: 'Cookr home-chef flow',
+    title: 'Cookr home chefs',
+    note: 'How a home cook signs up, gets listed and starts selling.',
+  },
+  {
+    thumb: '/assets/images/ui-works-3.webp',
+    full: '/assets/images/ui-works-full-3.webp',
+    alt: 'Salary advance activation',
+    title: 'Salary advance',
+    note: 'Drawing wages early against a WPS payroll card.',
+  },
+  {
+    thumb: '/assets/images/ui-works-4.webp',
+    full: '/assets/images/ui-works-full-4.webp',
+    alt: 'Banking dashboard',
+    title: 'Banking dashboard',
+    note: 'Account home — balance, cards and the day’s activity.',
+  },
 ];
 
 export const PLAY = {

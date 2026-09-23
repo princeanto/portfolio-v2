@@ -5,7 +5,9 @@ import { ThemeProvider } from './_components/theme';
 import Header from './_components/header';
 import Hero from './_components/hero';
 import Work from './_components/work';
-import { UiWorks, Play, Community, CommunityWorks } from './_components/galleries';
+// `Play` (Creative breaks) is parked, not deleted — re-add it to this import
+// and to the list below to bring the section back.
+import { UiWorks, Community, CommunityWorks } from './_components/galleries';
 import AiPlayground from './_components/ai-playground';
 import About from './_components/about';
 import Testimonials from './_components/testimonials';
@@ -20,7 +22,7 @@ export default function V2Page() {
         <Work />
         <UiWorks />
         <AiPlayground />
-        <Play />
+        {/* <Play /> */}
         <About />
         <Community />
         <CommunityWorks />
