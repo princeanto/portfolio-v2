@@ -27,6 +27,20 @@ export default function StructuredData() {
     ],
   };
 
+  /*
+    Without this, Google falls back to the domain-level site name for anything
+    on a shared host — which is why results read "— Vercel". WebSite is the
+    strongest signal for the name shown above the URL; alternateName is used
+    if the preferred one isn't picked.
+  */
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Prince Ladislas',
+    alternateName: ['Prince Ladislas Portfolio', 'princeladislas.vercel.app'],
+    url: SITE_URL,
+  };
+
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -64,6 +78,10 @@ export default function StructuredData() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

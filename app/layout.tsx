@@ -84,7 +84,8 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: TITLE,
     description: DESCRIPTION,
-    siteName: "Prince Ladislas Portfolio",
+    // Matches the WebSite schema name, so the two signals agree
+    siteName: "Prince Ladislas",
     images: [
       {
         url: "/assets/images/prince.png",
