@@ -5,6 +5,7 @@ import "./globals.css";
 import "aos/dist/aos.css";
 import { Analytics } from "@vercel/analytics/next";
 import StructuredData from "./_components/structured-data";
+import { SITE_URL } from "./_lib/site";
 const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
@@ -40,9 +41,15 @@ const lightAiry = localFont({
   variable: "--font-light-airy",
 });
 
+/* Written once, mirrored into Open Graph and Twitter below, so the three can
+   never drift apart. */
+const TITLE = "Prince Ladislas — Senior Product Designer | Enterprise Fintech & Design Systems";
+const DESCRIPTION =
+  "Senior product designer, 7 years in enterprise fintech. Led design for M2P Connect, an API orchestration platform, and a design system used by 10+ product teams and 150+ engineers.";
+
 export const metadata: Metadata = {
-  title: "Prince Ladislas | Product Designer",
-  description: "Product designer focused on creating intuitive and beautiful user experiences. Specializing in product design, UI/UX, and digital solutions.",
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
     "product designer",
     "UI designer",
@@ -57,7 +64,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Prince Ladislas",
-      url: "https://princeladislas1.vercel.app"
+      url: SITE_URL
     }
   ],
   creator: "Prince Ladislas",
@@ -67,16 +74,16 @@ export const metadata: Metadata = {
     telephone: true,
     address: false,
   },
-  metadataBase: new URL("https://princeladislas1.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: "https://princeladislas1.vercel.app",
+    canonical: SITE_URL,
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://princeladislas1.vercel.app",
-    title: "Prince Ladislas | Product Designer",
-    description: "Product designer focused on creating intuitive and beautiful user experiences. Specializing in product design, UI/UX, and digital solutions.",
+    url: SITE_URL,
+    title: TITLE,
+    description: DESCRIPTION,
     siteName: "Prince Ladislas Portfolio",
     images: [
       {
@@ -97,8 +104,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prince Ladislas | Product Designer",
-    description: "Product designer focused on creating intuitive and beautiful user experiences. Specializing in product design, UI/UX, and digital solutions.",
+    title: TITLE,
+    description: DESCRIPTION,
     images: ["/assets/images/prince.png"],
     creator: "@prince_designs",
   },

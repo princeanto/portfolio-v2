@@ -34,10 +34,7 @@ export default function Contact() {
             Let&apos;s chat
             <ArrowUpRight size={16} />
           </a>
-          <a
-            href={`mailto:${PROFILE.email}`}
-            className="btn-ghost"
-          >
+          <a href={`mailto:${PROFILE.email}`} className="btn-ghost">
             {PROFILE.email}
           </a>
         </div>

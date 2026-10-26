@@ -3,7 +3,7 @@
 Portfolio of Prince Ladislas, product designer working on enterprise platforms
 and fintech infrastructure.
 
-Live: https://princeladislas1.vercel.app
+Live: https://princeladislas.vercel.app
 
 ## Stack
 

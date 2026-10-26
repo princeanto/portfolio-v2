@@ -128,23 +128,23 @@ export type Service = { title: string; body: string; icon: string };
 
 export const SERVICES: Service[] = [
   {
-    title: 'Product Design',
-    body: 'Crafting intuitive, pixel-perfect experiences for web and mobile.',
+    title: 'Platform & workflow design',
+    body: 'Structuring API orchestration and low-code workflow tools so complex systems stay usable as they grow.',
     icon: '/assets/images/product-design-1.png',
   },
   {
-    title: 'UI/UX Strategy',
-    body: 'Solving real user problems with research-driven design thinking.',
+    title: 'Design systems at scale',
+    body: "Owned M2P’s design system through v2 and v3: 10+ product teams, 150+ engineers, with governance balancing shared components against product-specific flexibility.",
     icon: '/assets/images/product-design-2.png',
   },
   {
-    title: 'Design Systems',
-    body: 'Building scalable, flexible systems that power consistency and speed.',
+    title: 'Research & product discovery',
+    body: 'Led UX research and product structure for Recon 360, which signed 20+ enterprise clients before launch.',
     icon: '/assets/images/product-design-3.png',
   },
   {
-    title: 'AI-Enhanced Design',
-    body: 'Leveraging AI tools like ChatGPT & Perplexity to supercharge creativity.',
+    title: 'Building with AI',
+    body: 'I prototype and ship working products, not mockups. Everything in the AI playground is live code.',
     icon: '/assets/images/product-design-4.png',
   },
 ];
@@ -159,6 +159,9 @@ export type Project = {
   period: string;
   /** Discipline chips shown inside the media card */
   chips: string[];
+  /** One verified outcome, shown under the subtitle. Omitted where there
+      isn't a number worth standing behind. */
+  metric?: string;
   /** Wide artwork, used when the entry runs full width */
   art: string;
   /** Tall image opened in the lightbox */
@@ -174,6 +177,7 @@ export const PROJECTS: Project[] = [
     subtitle: 'One API instead of a hundred identity checks',
     period: '2021 – 2026',
     chips: ['Enterprise platform', 'Research', 'Design systems'],
+    metric: '80% faster client go-live',
     art: '/assets/images/projects/connect.png',
     route: '/platform-evolution/',
   },
@@ -183,6 +187,7 @@ export const PROJECTS: Project[] = [
     subtitle: 'Cross-border remittance, rebuilt around trust',
     period: 'Fintech',
     chips: ['Mobile app', 'UX', 'Research'],
+    metric: 'Cross-border remittance, UAE → South Asia corridors',
     art: '/assets/images/projects/lulu.png',
     full: '/assets/images/Lulu-ui.png',
   },
@@ -192,6 +197,7 @@ export const PROJECTS: Project[] = [
     subtitle: 'Al Fardan Exchange\u2019s money transfer experience',
     period: 'Fintech',
     chips: ['Mobile app', 'UX', 'Research'],
+    metric: '100K+ downloads on Google Play',
     art: '/assets/images/projects/alfapay.png',
     full: '/assets/images/Alfapay-ui.png',
   },
@@ -210,6 +216,7 @@ export const PROJECTS: Project[] = [
     subtitle: 'A workspace for running verification projects',
     period: 'SaaS',
     chips: ['Web app', 'UI', 'Design systems'],
+    metric: 'Verification projects, start to sign-off, in one workspace',
     art: '/assets/images/projects/wand.png',
     full: '/assets/images/Wand-ui.png',
   },
@@ -321,7 +328,7 @@ export const ABOUT = {
   portrait: '/assets/images/prince-hero-image.webp',
   statement: [
     { text: "I\u2019ve spent the past ", em: false },
-    { text: "6+ years", em: true },
+    { text: "7 years", em: true },
     { text: " designing ", em: false },
     { text: "enterprise and consumer", em: true },
     { text: " products for teams of all sizes.", em: false },

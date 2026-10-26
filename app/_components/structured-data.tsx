@@ -1,19 +1,21 @@
 'use client';
+import { SITE_URL, abs } from '../_lib/site';
 
 export default function StructuredData() {
   const schemaData = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Prince Ladislas',
-    url: 'https://princeladislas1.vercel.app',
-    image: 'https://princeladislas1.vercel.app/assets/images/prince.png',
-    jobTitle: 'Product Designer',
+    url: SITE_URL,
+    image: abs('/assets/images/prince.png'),
+    jobTitle: 'Senior Product Designer',
     email: 'princeladislas@gmail.com',
     sameAs: [
       'https://www.instagram.com/anto__designs',
       'https://www.linkedin.com/in/prince-ladislas/',
     ],
-    description: 'Product designer focused on creating intuitive and beautiful user experiences. Specializing in product design, UI/UX, and digital solutions.',
+    description:
+      'Senior product designer, 7 years in enterprise fintech. Led design for M2P Connect, an API orchestration platform, and a design system used by 10+ product teams and 150+ engineers.',
     knowsAbout: [
       'Product Design',
       'UI Design',
@@ -29,8 +31,8 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Prince Portfolio',
-    url: 'https://princeladislas1.vercel.app',
-    logo: 'https://princeladislas1.vercel.app/assets/images/logo.png',
+    url: SITE_URL,
+    logo: abs('/assets/images/logo.png'),
     description: 'Portfolio showcasing product design, UI/UX design, and creative work by Prince Ladislas.',
     sameAs: [
       'https://www.instagram.com/anto__designs',
@@ -47,11 +49,11 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
     name: 'Prince Ladislas Portfolio',
-    url: 'https://princeladislas1.vercel.app',
+    url: SITE_URL,
     description: 'Showcasing my work in product design, UI/UX design, and digital solutions.',
     image: [
-      'https://princeladislas1.vercel.app/assets/images/prince.png',
-      'https://princeladislas1.vercel.app/assets/images/prince-hero-image.webp',
+      abs('/assets/images/prince.png'),
+      abs('/assets/images/prince-hero-image.webp'),
     ],
     creator: {
       '@type': 'Person',

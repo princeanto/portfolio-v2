@@ -47,11 +47,11 @@ export default function Hero() {
           className="mt-7 max-w-[52ch] text-[clamp(1.0625rem,1.6vw,1.5rem)] leading-[1.45] tracking-[-0.015em]"
           style={{ color: 'var(--body)' }}
         >
-          With a <span style={{ color: 'var(--fg)' }}>detail-obsessed</span> approach and{' '}
-          <span style={{ color: 'var(--fg)' }}>6+ years of fintech craft</span>, including recent
-          work at <span style={{ color: 'var(--fg)' }}>M2P Fintech</span>, I obsess over converting
-          intricate systems into{' '}
-          <span style={{ color: 'var(--fg)' }}>refined, scalable products</span>.
+          <span style={{ color: 'var(--fg)' }}>7 years in fintech</span>, most recently leading
+          design at <span style={{ color: 'var(--fg)' }}>M2P Fintech</span> — where I owned the
+          design system behind{' '}
+          <span style={{ color: 'var(--fg)' }}>10+ product teams</span> and cut client go-live
+          time by <span style={{ color: 'var(--fg)' }}>80%</span>.
         </motion.p>
 
         <motion.div
@@ -66,6 +66,17 @@ export default function Hero() {
           </a>
           <ResumeLink className="btn-ghost">Download résumé</ResumeLink>
         </motion.div>
+
+        <motion.p
+          variants={rise}
+          initial="hidden"
+          animate="show"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.55 }}
+          className="mt-5 text-[15px]"
+          style={{ color: 'var(--muted)' }}
+        >
+          Open to senior product design roles — Chennai, Bengaluru, Hyderabad or remote.
+        </motion.p>
 
         <motion.button
           type="button"
