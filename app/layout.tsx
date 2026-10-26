@@ -120,6 +120,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  /* Proves ownership to Google Search Console. Kept in code rather than as a
+     file in public/ so it survives every deploy; removing it un-verifies the
+     property. */
+  verification: {
+    google: "uvUvymWXetp8w27jWnGXoH8ScDBlWFSgRlvMYyPHKxI",
+  },
   icons: {
     icon: [
       {
