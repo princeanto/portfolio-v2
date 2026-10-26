@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./platform-evolution.css";
+import { SITE_URL } from "../_lib/site";
 import { Reveal } from "./_lib/reveal";
 import { GalleryProvider, type GalleryImageEntry } from "./_lib/gallery-lightbox";
 import { SectionEyebrow } from "./_lib/section-heading";
@@ -26,10 +27,30 @@ const GALLERY_IMAGES: GalleryImageEntry[] = [
   { src: "/images/platform-evolution/reporting.png", alt: "Reporting", aspect: "1366/768" },
 ];
 
+const TITLE = "Connect — One API instead of a hundred identity checks | Prince Ladislas";
+const DESCRIPTION =
+  "How an identity verification product became an enterprise workflow platform: Connect v1, v2 and v3, and the 80% cut in client go-live time. A case study by Prince Ladislas.";
+const URL = `${SITE_URL}/platform-evolution/`;
+
+/* Without its own canonical this page inherits the root layout's, which points
+   at the home page — telling crawlers this case study is a duplicate of it. */
 export const metadata: Metadata = {
-  title: "Platform Evolution — Prince",
-  description:
-    "One API instead of a hundred: how an identity verification product evolved into an enterprise workflow platform. Connect v1, v2, and v3.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: URL },
+  openGraph: {
+    type: "article",
+    url: URL,
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [{ url: "/assets/images/projects/connect.png", width: 838, height: 593, alt: "Connect" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/assets/images/projects/connect.png"],
+  },
 };
 
 export default function PlatformEvolutionPage() {

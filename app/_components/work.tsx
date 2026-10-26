@@ -1,52 +1,11 @@
-'use client';
-import React, { useRef, useState } from 'react';
-import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from 'motion/react';
-import { Section, Reveal, useSafeReducedMotion } from './section';
-import Overlay from './overlay';
-import { PROJECTS, type Project } from '../_lib/data';
-
-function Viewer({ project, onClose }: { project: Project; onClose: () => void }) {
-  const [loaded, setLoaded] = useState(false);
-
-  return (
-    <Overlay label={project.name} onClose={onClose}>
-      {project.route ? (
-        <iframe
-          src={project.route}
-          title={project.name}
-          className="block h-[84vh] w-full rounded-[13px] border-0"
-          loading="lazy"
-        />
-      ) : (
-        <>
-          {!loaded && (
-            <div className="flex h-72 items-center justify-center text-sm" style={{ color: 'var(--muted)' }}>
-              Loading…
-            </div>
-          )}
-          <Image
-            src={project.full ?? project.art}
-            alt={project.name}
-            width={1600}
-            height={3200}
-            className={`h-auto w-full rounded-[13px] transition-opacity duration-500 ${
-              loaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={() => setLoaded(true)}
-          />
-        </>
-      )}
-    </Overlay>
-  );
-}
+"use client";
+import React, { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { Section, Reveal, useSafeReducedMotion } from "./section";
+import { PROJECTS, type Project } from "../_lib/data";
 
 /**
  * Media panel that tilts toward the pointer, with the artwork drifting
@@ -70,12 +29,12 @@ function TiltMedia({ project }: { project: Project }) {
   // artwork drifts opposite the tilt, which reads as depth
   const artX = useTransform(sx, [-0.5, 0.5], [14, -14]);
   const artY = useTransform(sy, [-0.5, 0.5], [10, -10]);
-  const glowX = useTransform(sx, [-0.5, 0.5], ['0%', '100%']);
-  const glowY = useTransform(sy, [-0.5, 0.5], ['0%', '100%']);
+  const glowX = useTransform(sx, [-0.5, 0.5], ["0%", "100%"]);
+  const glowY = useTransform(sy, [-0.5, 0.5], ["0%", "100%"]);
   const glow = useTransform(
     [glowX, glowY],
     ([x, y]: string[]) =>
-      `radial-gradient(420px circle at ${x} ${y}, rgba(255,255,255,0.09), transparent 60%)`
+      `radial-gradient(420px circle at ${x} ${y}, rgba(255,255,255,0.09), transparent 60%)`,
   );
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -104,7 +63,12 @@ function TiltMedia({ project }: { project: Project }) {
         style={
           reduced
             ? undefined
-            : { rotateX, rotateY, transformStyle: 'preserve-3d', willChange: 'transform' }
+            : {
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+                willChange: "transform",
+              }
         }
       >
         {/* highlight tracking the pointer */}
@@ -132,68 +96,86 @@ function TiltMedia({ project }: { project: Project }) {
 }
 
 function ProjectEntry({ project, index }: { project: Project; index: number }) {
-  const [open, setOpen] = useState(false);
   const flipped = index % 2 === 1;
+  /* Connect has its own written case study; the rest have a page built from
+     their board. Either way the entry is a real link, so a case study can be
+     sent to someone and found by a crawler. */
+  const href = project.route ?? `/work/${project.id}`;
 
   return (
-    <>
-      <Reveal delay={index === 0 ? 0 : 0.04} className={index === 0 ? '' : 'pt-24 sm:pt-32'}>
-        <article>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            aria-label={`Open ${project.name}`}
-            className={`group flex w-full flex-col items-center gap-8 text-left sm:gap-12 ${
-              flipped ? 'sm:flex-row-reverse' : 'sm:flex-row'
-            }`}
-          >
-            <TiltMedia project={project} />
+    <Reveal
+      delay={index === 0 ? 0 : 0.04}
+      className={index === 0 ? "" : "pt-24 sm:pt-32"}
+    >
+      <article>
+        <Link
+          href={href}
+          aria-label={`${project.name} case study`}
+          className={`group flex w-full flex-col items-center gap-8 text-left sm:gap-12 ${
+            flipped ? "sm:flex-row-reverse" : "sm:flex-row"
+          }`}
+        >
+          <TiltMedia project={project} />
 
-            {/* Meta — fills the column that used to sit empty */}
-            <span className="block w-full flex-1">
-              <span className="flex items-start justify-between gap-4">
-                <span className="text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-tight tracking-[-0.02em]">
-                  {project.name}
-                </span>
-                <span className="chip flex-shrink-0" style={{ color: 'var(--body)' }}>
-                  {project.period}
-                </span>
+          {/* Meta — fills the column that used to sit empty */}
+          <span className="block w-full flex-1">
+            <span className="flex items-start justify-between gap-4">
+              <span className="text-[clamp(1.5rem,2.6vw,2rem)] font-bold leading-tight tracking-[-0.02em]">
+                {project.name}
               </span>
-
               <span
-                className="mt-3 block text-[clamp(1rem,1.3vw,1.15rem)] leading-snug"
-                style={{ color: 'var(--body)' }}
+                className="chip flex-shrink-0"
+                style={{ color: "var(--body)" }}
               >
-                {project.subtitle}
-              </span>
-
-              <span className="mt-6 flex flex-wrap gap-2">
-                {project.chips.map(chip => (
-                  <span key={chip} className="chip">
-                    {chip}
-                  </span>
-                ))}
-              </span>
-
-              <span
-                className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium"
-                style={{ color: 'var(--fg)' }}
-              >
-                View case study
-                <ArrowUpRight
-                  size={17}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
+                {project.period}
               </span>
             </span>
-          </button>
-        </article>
-      </Reveal>
 
-      <AnimatePresence>
-        {open && <Viewer project={project} onClose={() => setOpen(false)} />}
-      </AnimatePresence>
-    </>
+            <span
+              className="mt-3 block text-[clamp(1rem,1.3vw,1.15rem)] leading-snug"
+              style={{ color: "var(--body)" }}
+            >
+              {project.subtitle}
+            </span>
+
+            {/* The outcome, set in mono so it reads as a figure rather than
+                  more prose. Absent where there is no verified number. */}
+            {project.metric && (
+              <span
+                className="font-[family-name:var(--font-geist-mono)] mt-4 flex items-center gap-2.5 text-[12px] uppercase tracking-[0.1em]"
+                style={{ color: "var(--fg)" }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-[5px] w-[5px] flex-shrink-0 rounded-full"
+                  style={{ background: "var(--live)" }}
+                />
+                {project.metric}
+              </span>
+            )}
+
+            <span className="mt-6 flex flex-wrap gap-2">
+              {project.chips.map((chip) => (
+                <span key={chip} className="chip">
+                  {chip}
+                </span>
+              ))}
+            </span>
+
+            <span
+              className="mt-8 inline-flex items-center gap-2 text-[15px] font-medium"
+              style={{ color: "var(--fg)" }}
+            >
+              View case study
+              <ArrowUpRight
+                size={17}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </span>
+          </span>
+        </Link>
+      </article>
+    </Reveal>
   );
 }
 
