@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import "./platform-evolution.css";
 import { SITE_URL } from "../_lib/site";
+import { PROFILE } from "../_lib/data";
 import { Reveal } from "./_lib/reveal";
 import { GalleryProvider, type GalleryImageEntry } from "./_lib/gallery-lightbox";
 import { SectionEyebrow } from "./_lib/section-heading";
@@ -61,6 +64,16 @@ export default function PlatformEvolutionPage() {
         <section className="relative isolate overflow-hidden border-b border-border bg-background">
           <GridBackground />
           <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+            {/* This page is reached directly now, not only inside a modal, so
+                it needs its own way back to the site. */}
+            <Link
+              href="/#work"
+              className="mb-10 flex w-fit items-center gap-2 text-[15px] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft size={16} />
+              All work
+            </Link>
+
             <SectionEyebrow>Enterprise Fintech Platform · 2021–2026</SectionEyebrow>
             <Reveal delay={0.05}>
               <h1 className="text-balance text-[2.75rem] font-medium leading-[1.08] tracking-tight text-foreground sm:text-6xl lg:text-[4rem]">
@@ -639,6 +652,35 @@ export default function PlatformEvolutionPage() {
                   </div>
                 </Reveal>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Somewhere to go once the case study ends */}
+        <section className="border-t border-border bg-background">
+          <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8 lg:px-10">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-[17px] text-muted-foreground">
+                Want the thinking behind another project?
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/#work"
+                  className="inline-flex items-center gap-2 rounded-[10px] border border-border px-4 py-2.5 text-[15px] text-foreground transition-colors hover:border-foreground"
+                >
+                  <ArrowLeft size={16} />
+                  All work
+                </Link>
+                <Link
+                  href={PROFILE.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-[10px] border border-border px-4 py-2.5 text-[15px] text-foreground transition-colors hover:border-foreground"
+                >
+                  Let&apos;s talk
+                  <ArrowUpRight size={16} />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
