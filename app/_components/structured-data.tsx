@@ -52,7 +52,7 @@ export default function StructuredData() {
       'https://www.instagram.com/anto__designs',
       'https://www.linkedin.com/in/prince-ladislas/',
     ],
-    contact: {
+    contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'General Inquiry',
       email: 'princeladislas@gmail.com',
