@@ -13,9 +13,15 @@ export function AnimatedStat({ value }: { value: string }) {
   const suffix = match ? match[2] : "";
 
   /* null means "the count-up hasn't started". The server renders in that
-     state, so the HTML carries the real number instead of a zero. It only
-     drops to 0 once the animation actually begins, on the client. */
+     state, so the HTML carries the real number instead of a zero. */
   const [display, setDisplay] = useState<number | null>(null);
+
+  /* Falling back to the real value until the count-up runs would make the
+     number snap down the moment it scrolls into view -- 80%, then 12%,
+     then back up. So once hydration confirms the animation will run, drop
+     to the starting value immediately, while the stat is still off-screen. */
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
   useEffect(() => {
     if (!isInView || target === null || prefersReducedMotion) return;
@@ -33,7 +39,7 @@ export function AnimatedStat({ value }: { value: string }) {
 
   return (
     <span ref={ref}>
-      {display ?? target}
+      {display ?? (hydrated && !prefersReducedMotion ? 0 : target)}
       {suffix}
     </span>
   );
