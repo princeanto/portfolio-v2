@@ -151,12 +151,12 @@ export const SERVICES: Service[] = [
   },
   {
     title: 'Leadership & mentoring',
-    body: 'Leading a three-person design team, running critique and mentoring designers through the work rather than reviewing it at the end.',
+    body: 'Leading a four-person design team, running critique and mentoring designers through the work rather than reviewing it at the end.',
     icon: '/assets/images/product-design-5.png',
   },
   {
     title: 'Community',
-    body: 'Organising design meets and workshops across Chennai and Hyderabad, from Kalaiyugam and MAD Design to design-system sessions.',
+    body: 'Madrasters ambassador for over seven years, with 30+ design events and workshops organised across Chennai and Hyderabad.',
   },
 ];
 
