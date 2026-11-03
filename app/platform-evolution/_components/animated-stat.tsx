@@ -12,9 +12,10 @@ export function AnimatedStat({ value }: { value: string }) {
   const target = match ? parseFloat(match[1]) : null;
   const suffix = match ? match[2] : "";
 
-  const [display, setDisplay] = useState(
-    prefersReducedMotion || target === null ? target ?? 0 : 0,
-  );
+  /* null means "the count-up hasn't started". The server renders in that
+     state, so the HTML carries the real number instead of a zero. It only
+     drops to 0 once the animation actually begins, on the client. */
+  const [display, setDisplay] = useState<number | null>(null);
 
   useEffect(() => {
     if (!isInView || target === null || prefersReducedMotion) return;
@@ -32,7 +33,7 @@ export function AnimatedStat({ value }: { value: string }) {
 
   return (
     <span ref={ref}>
-      {display}
+      {display ?? target}
       {suffix}
     </span>
   );
