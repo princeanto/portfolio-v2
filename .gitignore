@@ -89,3 +89,6 @@ yarn-error.log*
 
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated case study PDFs (rebuildable from the slices in public/assets/images/case)
+case-study-pdfs/
