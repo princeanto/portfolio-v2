@@ -6,7 +6,7 @@ const LINKEDIN = 'https://www.linkedin.com/in/prince-ladislas/';
 
 export const PROFILE = {
   name: 'Prince Ladislas',
-  role: 'Product Designer',
+  role: 'Senior Product Designer',
   location: 'India',
   email: 'princeladislas@gmail.com',
   resume: '/assets/pdf/Resume.pdf',
@@ -124,7 +124,9 @@ export const AI_PLAYGROUND: AiWork[] = [
   },
 ];
 
-export type Service = { title: string; body: string; icon: string };
+/* icon isn't rendered by the About grid today; it stays optional so a
+   pillar can exist without inventing an artwork file for it. */
+export type Service = { title: string; body: string; icon?: string };
 
 export const SERVICES: Service[] = [
   {
@@ -147,6 +149,15 @@ export const SERVICES: Service[] = [
     body: 'I prototype and ship working products, not mockups. Everything in the AI playground is live code.',
     icon: '/assets/images/product-design-4.png',
   },
+  {
+    title: 'Leadership & mentoring',
+    body: 'Leading a three-person design team, running critique and mentoring designers through the work rather than reviewing it at the end.',
+    icon: '/assets/images/product-design-5.png',
+  },
+  {
+    title: 'Community',
+    body: 'Organising design meets and workshops across Chennai and Hyderabad, from Kalaiyugam and MAD Design to design-system sessions.',
+  },
 ];
 
 export type Project = {
@@ -155,8 +166,8 @@ export type Project = {
   name: string;
   /** One-line description sitting under the name */
   subtitle: string;
-  /** Engagement window shown in the pill on the right */
-  period: string;
+  /** Discipline area shown in the pill on the right */
+  category: string;
   /** Discipline chips shown inside the media card */
   chips: string[];
   /** One verified outcome, shown under the subtitle. Omitted where there
@@ -175,7 +186,7 @@ export const PROJECTS: Project[] = [
     id: 'connect',
     name: 'Connect',
     subtitle: 'One API instead of a hundred identity checks',
-    period: '2021 – 2026',
+    category: 'Enterprise fintech',
     chips: ['Enterprise platform', 'Research', 'Design systems'],
     metric: '80% faster client go-live',
     art: '/assets/images/projects/connect.png',
@@ -185,7 +196,7 @@ export const PROJECTS: Project[] = [
     id: 'lulu',
     name: 'Lulu Money',
     subtitle: 'Cross-border remittance, rebuilt around trust',
-    period: 'Fintech',
+    category: 'Fintech',
     chips: ['Mobile app', 'UX', 'Research'],
     metric: 'Cross-border remittance, UAE → South Asia corridors',
     art: '/assets/images/projects/lulu.png',
@@ -195,26 +206,27 @@ export const PROJECTS: Project[] = [
     id: 'alfapay',
     name: 'AlfaPay',
     subtitle: 'Al Fardan Exchange\u2019s money transfer experience',
-    period: 'Fintech',
+    category: 'Fintech',
     chips: ['Mobile app', 'UX', 'Research'],
     metric: '100K+ downloads on Google Play',
     art: '/assets/images/projects/alfapay.png',
     full: '/assets/images/Alfapay-ui.png',
   },
-  {
-    id: 'cookr',
-    name: 'Cookr',
-    subtitle: 'Home-cooked food, ordered like everything else',
-    period: 'Consumer',
-    chips: ['Web app', 'UI'],
-    art: '/assets/images/projects/cookr.png',
-    full: '/assets/images/Cookr-ui.png',
-  },
+  // Cookr is parked — uncomment to restore the card and its /work/cookr page
+  // {
+  //   id: 'cookr',
+  //   name: 'Cookr',
+  //   subtitle: 'Home-cooked food, ordered like everything else',
+  //   category: 'Consumer',
+  //   chips: ['Web app', 'UI'],
+  //   art: '/assets/images/projects/cookr.png',
+  //   full: '/assets/images/Cookr-ui.png',
+  // },
   {
     id: 'wand',
     name: 'Wand',
     subtitle: 'A workspace for running verification projects',
-    period: 'SaaS',
+    category: 'SaaS',
     chips: ['Web app', 'UI', 'Design systems'],
     metric: 'Verification projects, start to sign-off, in one workspace',
     art: '/assets/images/projects/wand.png',

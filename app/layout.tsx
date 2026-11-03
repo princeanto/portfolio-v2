@@ -91,7 +91,7 @@ export const metadata: Metadata = {
         url: "/assets/images/prince.png",
         width: 1200,
         height: 630,
-        alt: "Prince Ladislas - Product Designer",
+        alt: "Prince Ladislas - Senior Product Designer",
         type: "image/png",
       },
       {

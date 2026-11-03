@@ -127,7 +127,7 @@ function ProjectEntry({ project, index }: { project: Project; index: number }) {
                 className="chip flex-shrink-0"
                 style={{ color: "var(--body)" }}
               >
-                {project.period}
+                {project.category}
               </span>
             </span>
 

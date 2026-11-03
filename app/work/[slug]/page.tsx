@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             className="font-[family-name:var(--font-geist-mono)] text-[11px] uppercase tracking-[0.18em]"
             style={{ color: 'var(--muted)' }}
           >
-            {project.period}
+            {project.category}
           </p>
 
           <h1 className="mt-5 max-w-[18ch] text-[clamp(2.25rem,5vw,4rem)] font-bold leading-[1.05] tracking-[-0.035em]">
